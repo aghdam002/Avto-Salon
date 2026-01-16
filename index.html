@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AVTO SALON 002 </title>
+    <link rel="shortcut icon" href="avtopro.png" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Header */
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+        /* Hero */
+        .hero {
+            background: url(avtopro.png)center/cover;
+            color: white;
+            text-align: center;
+            padding: 250px 40px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2,
+        .hero p,
+        .hero button {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 15px 30px;
+            border: none;
+            background: red;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hero button:hover {
+            background: darkred;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            border: none;
+            background: #111;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .categories button:hover,
+        .categories button.active {
+            background: red;
+        }
+
+        /* Cars Section */
+        .cars {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .cars2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .car {
+            background: white;
+            width: 220px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .car:hover {
+            transform: translateY(-10px);
+        }
+
+        .car img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .car h3 {
+            margin: 10px 0 5px;
+        }
+
+        .car p {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #eee;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 300px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .contact button {
+            padding: 12px 25px;
+            border: none;
+            background: red;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contact button:hover {
+            background: darkred;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            .cars {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .car {
+                width: 80%;
+            }
+
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .categories button {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>AVTO SALON 002</h1>
+        <nav>
+            <a href="#home">Ana səhifə</a>
+            <a href="#cars">Maşınlar</a>
+            <a href="#contact">Əlaqə</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>AVTO SALON 002</h2>
+
+
+
+    </section>
+
+    <!-- Categories -->
+    <div class="categories">
+        <button class="active" onclick="filterCars('all')">Choose Your Cars</button>
+
+    </div>
+
+    <section class="cars" id="cars">
+        <!-- Cars -->
+        <section class="cars2">
+            <div class="car" data-category="SUV">
+                <img src="suv1.png">
+                <h3>SUV Model 1</h3>
+                <p>Qiymət: 65 000$</p>
+            </div>
+
+            <div class="car" data-category="Sedan">
+                <img src="sedan2.png">
+                <h3>Sedan Model 2</h3>
+                <p>Qiymət: 50 000$</p>
+            </div>
+
+            <div class="car" data-category="Sport">
+                <img src="tesla.png">
+                <h3>Sport Model 3</h3>
+                <p>Qiymət: 88 000$</p>
+            </div>
+
+            <div class="car" data-category="Electric">
+                <img src="electrik4.png">
+                <h3>Electric Model 4</h3>
+                <p>Qiymət: 64 000$</p>
+            </div>
+
+            <div class="car" data-category="SUV">
+                <img src="model suv 5.png">
+                <h3>SUV Model 5</h3>
+                <p>Qiymət: 67 000$</p>
+            </div>
+
+            <div class="car" data-category="Sedan">
+                <img src="sedan modle6.png">
+                <h3>Sedan Model 6</h3>
+                <p>Qiymət: 36 000$</p>
+            </div>
+
+            <div class="car" data-category="Sport">
+                <img src="sport model 7.png">
+                <h3>Sport Model 7</h3>
+                <p>Qiymət: 82 000$</p>
+            </div>
+
+            <div class="car" data-category="Electric">
+                <img src="model 8electrik.png">
+                <h3>Electric Model 8</h3>
+                <p>Qiymət: 70 000$</p>
+            </div>
+
+            <div class="car" data-category="SUV">
+                <img src="suv mod 9.png">
+                <h3>SUV Model 9</h3>
+                <p>Qiymət: 55 000$</p>
+            </div>
+
+            <div class="car" data-category="Sedan">
+                <img src="sedan model 10.png">
+                <h3>Sedan Model 10</h3>
+                <p>Qiymət: 45 000$</p>
+            </div>
+
+            <div class="car" data-category="Sedan">
+                <img src="suv mod 11.png">
+                <h3>Suv Model 11</h3>
+                <p>Qiymət: 45 000$</p>
+            </div>
+
+            <div class="car" data-category="Sedan">
+                <img src="sedan mod 12.png">
+                <h3>Sedan Model 12</h3>
+                <p>Qiymət: 60 000$</p>
+            </div>
+            <div class="car" data-category="Sport">
+                <img src="sport mod 8.png">
+                <h3>Sport Model 8</h3>
+                <p>Qiymət: 67 000$</p>
+            </div>
+
+            <div class="car" data-category="Electric">
+                <img src="electrik model 9.png">
+                <h3>Electric Model 9</h3>
+                <p>Qiymət: 58 000$</p>
+            </div>
+            <div class="car" data-category="SUV">
+                <img src="suv mod 12.png">
+                <h3>SUV Model 12</h3>
+                <p>Qiymət: 54 000$</p>
+            </div>
+            <div class="car" data-category="Sedan">
+                <img src="sedan model 13.png">
+                <h3>Sedan Model 13</h3>
+                <p>Qiymət: 50 000$</p>
+            </div>
+            <div class="car" data-category="Sedan">
+                <img src="sedan mod 14.png">
+                <h3>Sedan Model 14</h3>
+                <p>Qiymət: 45000$</p>
+            </div>
+            <div class="car" data-category="Sedan">
+                <img src="URUS.png">
+                <h3>LAMBARGHINI URUS</h3>
+                <p>Qiymət: $246,500</p>
+            </div>
+
+        </section>
+
+
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2>Əlaqə</h2>
+        <form>
+            <input type="text" placeholder="Adınız" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mesajınız" rows="5" required></textarea>
+            <button type="submit">Göndər</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>ELAQE📞{077 777 77 77} </p>
+        <p>© 2026 Created in Azerbaijan</p>
+    </footer>
+</body>
+
+</html>
