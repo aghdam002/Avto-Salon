@@ -3,385 +3,809 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>AVTO SALON 002 </title>
-    <link rel="shortcut icon" href="avtopro.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteAuto - Premium Avtomobillər</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
+        /* --- Ümumi CSS Ayarları --- */
+        :root {
+            --primary-color: #0f172a;
+            /* Tünd göy/qara */
+            --accent-color: #e11d48;
+            /* Qırmızı vurğu */
+            --text-light: #f8fafc;
+            --text-dark: #334155;
+            --bg-light: #f1f5f9;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Header */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Header / Naviqasiya --- */
         header {
-            background: #111;
-            color: white;
-            padding: 15px 30px;
+            background-color: rgba(15, 23, 42, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        header h1 {
-
-            margin: 0;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        nav a {
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-contact {
+            background-color: var(--accent-color);
             color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            transition: transform 0.3s, background 0.3s;
         }
 
-        nav a:hover {
-            color: red;
+        .btn-contact:hover {
+            background-color: #be123c;
+            transform: translateY(-2px);
         }
 
-        /* Hero */
+        /* Mobil Menu İkonu */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Bölməsi --- */
         .hero {
-            background: url(avtopro.png)center/cover;
-            color: white;
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 250px 40px;
-            position: relative;
+            color: white;
+            margin-top: 60px;
+            padding: 0 20px;
         }
 
-        .hero::after {
-            content: '';
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* --- Avtomobil Kartları (Showroom) --- */
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-title span {
+            color: var(--accent-color);
+        }
+
+        .showroom {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .car-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .car-details {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .car-price {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .car-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-details {
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .btn-details:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Xidmətlər Bölməsi --- */
+        .services {
+            background-color: white;
+            padding: 5rem 20px;
+            text-align: center;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background: var(--bg-light);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            background: white;
+            box-shadow: var(--card-shadow);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #cbd5e1;
+            padding: 4rem 20px 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* --- Modal (Popup) Styles --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 20px;
+            background: #000;
+        }
+
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
         }
 
-        .hero h2,
-        .hero p,
-        .hero button {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-
-        .hero button {
-            padding: 15px 30px;
-            border: none;
-            background: red;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .hero button:hover {
-            background: darkred;
-        }
-
-        /* Categories */
-        .categories {
-            display: flex;
-            justify-content: center;
+        .modal-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .categories button {
-            padding: 10px 20px;
-            border: none;
-            background: #111;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .categories button:hover,
-        .categories button.active {
-            background: red;
-        }
-
-        /* Cars Section */
-        .cars {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .cars2 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .car {
-            background: white;
-            width: 220px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .car:hover {
-            transform: translateY(-10px);
-        }
-
-        .car img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .car h3 {
-            margin: 10px 0 5px;
-        }
-
-        .car p {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #eee;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .contact h2 {
             margin-bottom: 20px;
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 10px;
         }
 
-        .contact form {
+        .modal-spec-item {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 15px;
         }
 
-        .contact input,
-        .contact textarea {
-            width: 300px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        .modal-spec-label {
+            font-size: 0.8rem;
+            color: #64748b;
         }
 
-        .contact button {
-            padding: 12px 25px;
-            border: none;
-            background: red;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
+        .modal-spec-value {
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
-        .contact button:hover {
-            background: darkred;
-        }
 
-        /* Footer */
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Responsive */
-        @media(max-width: 900px) {
-            .cars {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .car {
-                width: 80%;
-            }
-
-            .hero h2 {
-                font-size: 36px;
-            }
-
-            .categories button {
-                width: 120px;
-            }
-        }
     </style>
 </head>
 
 <body>
 
+    <!-- Header -->
     <header>
-        <h1>AVTO SALON 002</h1>
         <nav>
-            <a href="#home">Ana səhifə</a>
-            <a href="#cars">Maşınlar</a>
-            <a href="#contact">Əlaqə</a>
+            <a href="#" class="logo">
+                <i class="fa-solid fa-car-side"></i> Elite<span>Auto</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Ana Səhifə</a></li>
+                <li><a href="#cars">Avtomobillər</a></li>
+                <li><a href="#services">Xidmətlər</a></li>
+                <li><a href="#contact" class="btn-contact">Əlaqə</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </nav>
     </header>
 
+    <!-- Hero Bölməsi -->
     <section class="hero" id="home">
-        <h2>AVTO SALON 002</h2>
+        <div class="hero-content">
+            <h1>Xəyalınızdakı Avtomobili <br> Bizimlə Tapın</h1>
+            <p>Premium klass, etibarlı və yoxlanılmış avtomobillərin tək ünvanı.</p>
+        </div>
+    </section>
 
+    <!-- Avtomobillər -->
+    <section class="showroom" id="cars">
+        <h2 class="section-title">Yeni <span>Elanlar</span></h2>
 
+        <!-- Kart 1: Mercedes C300 -->
+        <div class="car-card">
+            <span class="car-badge">Kreditlə</span>
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Mercedes" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Mercedes-Benz C300</h3>
+                <span class="car-price">45,500 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2021</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 35k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(1)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 2: BMW M5 -->
+        <div class="car-card">
+            <span class="car-badge">Yeni</span>
+            <img src="https://cdn.prod.website-files.com/5b4a3b3971d099f78f362505/65c669b68197e04f38602de7_WBS83CH04PCN09543-1.webp"
+                alt="BMW" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">BMW M5 Competition</h3>
+                <span class="car-price">110,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2023</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 5k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(2)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 3: Toyota Camry -->
+        <div class="car-card">
+            <img src="https://canadianautoreview.ca/wp-content/uploads/2023/11/IMG_6895-1.jpg"
+                alt="Toyota" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Toyota Camry SE</h3>
+                <span class="car-price">32,800 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2020</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 60k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Hibrid</div>
+                </div>
+                <button class="btn-details" onclick="openModal(3)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 4: Changan UNI-K -->
+        <div class="car-card">
+            <span class="car-badge" style="background-color: #007bff;">Trend</span>
+            <img src="https://img-1.carhao.market/guazi/3804500/10a5d795-a5e4-4cf1-bd76-c962f8144c5c.webp"
+                alt="Changan" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Changan UNI-K</h3>
+                <span class="car-price">48,900 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2024</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 0 km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(4)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 5: Mercedes G-Class -->
+        <div class="car-card">
+            <span class="car-badge">Premium</span>
+            <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2024/11/414cc3622e16efdb898cee9b2808390c/1-Mercedes-AMG-G63-review-UK-2024.jpg?w=1280&h=720"
+                alt="G-Wagon" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Mercedes-AMG G 63</h3>
+                <span class="car-price">365,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2024</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 0 km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(5)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 6: BMW X7 -->
+        <div class="car-card">
+            <img src="https://cdn.motor1.com/images/mgl/nAXOXj/s1/4x3/2023-bmw-x7-xdrive40i.webp"
+                alt="BMW X7" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">BMW X7 xDrive40i</h3>
+                <span class="car-price">185,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2023</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 10k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Hibrid</div>
+                </div>
+                <button class="btn-details" onclick="openModal(6)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 7: Mercedes S-Class (YENİ) -->
+        <div class="car-card">
+            <span class="car-badge" style="background-color: #000;">VIP</span>
+            <img src="https://hips.hearstapps.com/hmg-prod/images/2023-mercedes-benz-s580e-phev-105-653a8ae3e3eb2.jpg?crop=0.670xw:0.564xh;0.295xw,0.372xh&resize=1200:*"
+                alt="Mercedes S-Class" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Mercedes-Benz S580</h3>
+                <span class="car-price">280,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2023</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 5k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(7)">Ətraflı Bax</button>
+            </div>
+        </div>
+        <!-- Kart 8: Changan CS95 (YENİ) -->
+        <div class="car-card">
+            <span class="car-badge">Ailəvi</span>
+            <img src="https://api2.ma.ru/cars_images/1836981/2D/medium/1836981_1_6833914_15501353.jpg"
+                alt="Changan CS95" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Changan CS95</h3>
+                <span class="car-price">55,500 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2024</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 0 km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(8)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 9: BMW 3 Series (YENİ) -->
+        <div class="car-card">
+            <img src="https://avatars.mds.yandex.net/get-verba/1535139/2a00000190ba3798a70601119c45057310f3/auto_main"
+                alt="BMW 3 Series" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">BMW 330i M Sport</h3>
+                <span class="car-price">78,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2022</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 18k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(9)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 10: Toyota Land Cruiser (YENİ) -->
+        <div class="car-card">
+            <span class="car-badge" style="background-color: #22c55e;">Sərt</span>
+            <img src="https://images.unsplash.com/photo-1594502184342-28efcb0a5748?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Toyota LC300" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Toyota LC 300</h3>
+                <span class="car-price">165,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2023</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 8k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Dizel</div>
+                </div>
+                <button class="btn-details" onclick="openModal(10)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 11: Hyundai Santa Fe (YENİ) -->
+        <div class="car-card">
+            <img src="https://images.unsplash.com/photo-1632245889029-e412c6c79f32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Hyundai Santa Fe" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Hyundai Santa Fe</h3>
+                <span class="car-price">62,000 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2023</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 12k km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Hibrid</div>
+                </div>
+                <button class="btn-details" onclick="openModal(11)">Ətraflı Bax</button>
+            </div>
+        </div>
+
+        <!-- Kart 12: Kia Sportage (YENİ) -->
+        <div class="car-card">
+            <span class="car-badge">Populyar</span>
+            <img src="https://images.unsplash.com/photo-1698642078657-61909a96e594?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Kia Sportage" class="car-img">
+            <div class="car-details">
+                <h3 class="car-title">Kia Sportage</h3>
+                <span class="car-price">52,500 AZN</span>
+                <div class="car-specs">
+                    <div class="spec-item"><i class="fa-solid fa-calendar"></i> 2024</div>
+                    <div class="spec-item"><i class="fa-solid fa-gauge"></i> 0 km</div>
+                    <div class="spec-item"><i class="fa-solid fa-gas-pump"></i> Benzin</div>
+                </div>
+                <button class="btn-details" onclick="openModal(12)">Ətraflı Bax</button>
+            </div>
+        </div>
 
     </section>
 
-    <!-- Categories -->
-    <div class="categories">
-        <button class="active" onclick="filterCars('all')">Choose Your Cars</button>
+    <!-- Xidmətlər -->
+    <section class="services" id="services">
+        <h2 class="section-title">Niyə <span>Biz?</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-shield-halved service-icon"></i>
+                <h3>Zəmanətli Satış</h3>
+                <p>Bütün avtomobillərimiz tam texniki baxışdan keçirilib.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-hand-holding-dollar service-icon"></i>
+                <h3>Sərfəli Kredit</h3>
+                <p>İlkin ödəniş 20%-dən başlayaraq sərfəli lizinq şərtləri.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-headset service-icon"></i>
+                <h3>7/24 Dəstək</h3>
+                <p>Peşəkar komandamız hər zaman sizin suallarınızı cavablayır.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>EliteAuto</h3>
+                <p>Bakının ən böyük və etibarlı avtomobil mərkəzi. Keyfiyyət və güvən bizim əsas prinsipimizdir.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Sürətli Keçidlər</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Ana Səhifə</a></li>
+                    <li><a href="#cars">Avtomobillər</a></li>
+                    <li><a href="#services">Xidmətlər</a></li>
+                    <li><a href="#contact">Əlaqə</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Bizimlə Əlaqə</h3>
+                <ul class="footer-links">
+                    <li><i class="fa-solid fa-location-dot"></i> Babək prospekti, Bakı, AZ1000</li>
+                    <li><i class="fa-solid fa-phone"></i> +994 50 123 45 67</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@eliteauto.az</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 EliteAuto. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL (POPUP) STRUCTURE -->
+    <div class="modal-overlay" id="carModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Car Name</h3>
+                <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-specs-grid">
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">Qiymət</span>
+                        <span class="modal-spec-value" id="modalPrice">0 AZN</span>
+                    </div>
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">Buraxılış ili</span>
+                        <span class="modal-spec-value" id="modalYear">2023</span>
+                    </div>
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">Yürüş</span>
+                        <span class="modal-spec-value" id="modalMileage">0 km</span>
+                    </div>
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">Mühərrik</span>
+                        <span class="modal-spec-value" id="modalEngine">2.0 L</span>
+                    </div>
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">Yanacaq</span>
+                        <span class="modal-spec-value" id="modalFuel">Benzin</span>
+                    </div>
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">Sürətlər Qutusu</span>
+                        <span class="modal-spec-value" id="modalTrans">Avtomat</span>
+                    </div>
+                </div>
+
+                <p id="modalDesc" style="color: #475569; margin-bottom: 1rem;">
+                    Məlumat yüklənir...
+                </p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--primary-color);">360° Video / İcmal</h4>
+                <div class="video-container">
+                    <iframe id="modalVideo" src="" title="Car Video" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <section class="cars" id="cars">
-        <!-- Cars -->
-        <section class="cars2">
-            <div class="car" data-category="SUV">
-                <img src="suv1.png">
-                <h3>SUV Model 1</h3>
-                <p>Qiymət: 65 000$</p>
-            </div>
-
-            <div class="car" data-category="Sedan">
-                <img src="sedan2.png">
-                <h3>Sedan Model 2</h3>
-                <p>Qiymət: 50 000$</p>
-            </div>
-
-            <div class="car" data-category="Sport">
-                <img src="tesla.png">
-                <h3>Sport Model 3</h3>
-                <p>Qiymət: 88 000$</p>
-            </div>
-
-            <div class="car" data-category="Electric">
-                <img src="electrik4.png">
-                <h3>Electric Model 4</h3>
-                <p>Qiymət: 64 000$</p>
-            </div>
-
-            <div class="car" data-category="SUV">
-                <img src="model suv 5.png">
-                <h3>SUV Model 5</h3>
-                <p>Qiymət: 67 000$</p>
-            </div>
-
-            <div class="car" data-category="Sedan">
-                <img src="sedan modle6.png">
-                <h3>Sedan Model 6</h3>
-                <p>Qiymət: 36 000$</p>
-            </div>
-
-            <div class="car" data-category="Sport">
-                <img src="sport model 7.png">
-                <h3>Sport Model 7</h3>
-                <p>Qiymət: 82 000$</p>
-            </div>
-
-            <div class="car" data-category="Electric">
-                <img src="model 8electrik.png">
-                <h3>Electric Model 8</h3>
-                <p>Qiymət: 70 000$</p>
-            </div>
-
-            <div class="car" data-category="SUV">
-                <img src="suv mod 9.png">
-                <h3>SUV Model 9</h3>
-                <p>Qiymət: 55 000$</p>
-            </div>
-
-            <div class="car" data-category="Sedan">
-                <img src="sedan model 10.png">
-                <h3>Sedan Model 10</h3>
-                <p>Qiymət: 45 000$</p>
-            </div>
-
-            <div class="car" data-category="Sedan">
-                <img src="suv mod 11.png">
-                <h3>Suv Model 11</h3>
-                <p>Qiymət: 45 000$</p>
-            </div>
-
-            <div class="car" data-category="Sedan">
-                <img src="sedan mod 12.png">
-                <h3>Sedan Model 12</h3>
-                <p>Qiymət: 60 000$</p>
-            </div>
-            <div class="car" data-category="Sport">
-                <img src="sport mod 8.png">
-                <h3>Sport Model 8</h3>
-                <p>Qiymət: 67 000$</p>
-            </div>
-
-            <div class="car" data-category="Electric">
-                <img src="electrik model 9.png">
-                <h3>Electric Model 9</h3>
-                <p>Qiymət: 58 000$</p>
-            </div>
-            <div class="car" data-category="SUV">
-                <img src="suv mod 12.png">
-                <h3>SUV Model 12</h3>
-                <p>Qiymət: 54 000$</p>
-            </div>
-            <div class="car" data-category="Sedan">
-                <img src="sedan model 13.png">
-                <h3>Sedan Model 13</h3>
-                <p>Qiymət: 50 000$</p>
-            </div>
-            <div class="car" data-category="Sedan">
-                <img src="sedan mod 14.png">
-                <h3>Sedan Model 14</h3>
-                <p>Qiymət: 45000$</p>
-            </div>
-            <div class="car" data-category="Sedan">
-                <img src="URUS.png">
-                <h3>LAMBARGHINI URUS</h3>
-                <p>Qiymət: $246,500</p>
-            </div>
-
-        </section>
-
-
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <h2>Əlaqə</h2>
-        <form>
-            <input type="text" placeholder="Adınız" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Mesajınız" rows="5" required></textarea>
-            <button type="submit">Göndər</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>ELAQE📞{077 777 77 77} </p>
-        <p>© 2026 Created in Azerbaijan</p>
-    </footer>
 </body>
 
 </html>
